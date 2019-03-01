@@ -1,0 +1,9 @@
+{
+
+    "workbench.colorCustomizations": {
+        "titleBar.border": "#8b0900"
+    },
+    "code-runner.executorMapByFileExtension": {
+        ".jsx": "npm start"
+    }
+}
