@@ -8,8 +8,8 @@ class AuthIDInput extends Component {
   setOAuthKey = () => {
     let newCreds = document.getElementById('user-id-input').value
 
-    console.log(newCreds)
     credentials.canvas.id = newCreds;
+    console.log(credentials.canvas.access_token)
   }
 
 
