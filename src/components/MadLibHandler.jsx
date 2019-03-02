@@ -1,6 +1,9 @@
 import React from 'react'
 import Axios from 'axios'
 
+import random_words from './resources/random_words.json'
+
+
 export default class MadLibHandler extends React.Component {
     constructor (props) {
         super(props)
@@ -8,10 +11,10 @@ export default class MadLibHandler extends React.Component {
             story: ''
         }
     }
-    componentDidMount() {
+    componentDidMount = () => {
         this.props.onRef(this)
     }
-    componentWillUnmount() {
+    componentWillUnmount = () => {
         this.props.onRef(undefined)
     }
 
@@ -50,7 +53,55 @@ export default class MadLibHandler extends React.Component {
         return story
     }
 
-    render() {
+    /*  Basic Word Randomizers */
+
+    fetchRandomNoun = () => {
+        var dice = Math.floor(Math.random() * random_words.noun.length);
+
+        return random_words.noun[dice]
+
+        //TODO: Be able to accept user input
+        if (dice < 2) {
+            return this.CanvasDataHandler.fetchRandomCourse
+        } else if (dice < 4) {
+            return this.CanvasDataHandler.fetchRandomAssignment
+        } else if (dice < 6) {
+            return this.CanvasDataHandler.fetchRandomQuiz
+        } else if (dice < 8) {
+            return this.CanvasDataHandler.fetchRandomGroup
+        } else if (dice < 10) {
+            return this.CanvasDataHandler.fetchRandomStudent
+        } else if (dice < 12) {
+            return this.CanvasDataHandler.fetchRandomAdmin
+
+        }
+    }
+    fetchRandomAdjective = () => {
+        //TODO: Be able to accept user input
+
+        var dice = Math.floor(Math.random() * random_words.adjective.length);
+
+        console.log(dice)
+        return random_words.adjective[dice]
+    }
+    fetchRandomVerb = () => {
+        //TODO: Be able to accept user input
+
+        var dice = Math.floor(Math.random() * random_words.verb.length);
+
+        return random_words.verb[dice]
+    }
+
+
+    /*  Category-specific word randomizers */
+    fetchRandomLiquid = () => {
+
+    }
+    fetchRandomAnimal = () => {
+        //TODO: What is your school mascot?
+    }
+
+    render = () => {
         return (<i></i>)
     }
 }
