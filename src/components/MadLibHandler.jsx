@@ -24,7 +24,7 @@ export default class MadLibHandler extends React.Component {
                 console.log(res)
             })
 
-        return story.blanks[0]
+        return story
     }
 
     render() {

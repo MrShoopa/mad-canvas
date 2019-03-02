@@ -10,7 +10,7 @@ import MadLibHandler from './components/MadLibHandler'
 
 import credentials from './auth/credentials.json'
 
-import StoryScreen from './components/screens/StoryScreen.jsx'
+import Story from './components/resources/Story'
 
 
 class App extends Component {
@@ -19,9 +19,8 @@ class App extends Component {
     console.log('sadfas')
     if (!(credentials.canvas.access_token === "")) {
       var generatedMadLib = await this.MadLibHandler.fetchStory()
-      console.log(generatedMadLib)
 
-      ReactDOM.render(<StoryScreen story={generatedMadLib} />,
+      ReactDOM.render(<Story story={generatedMadLib} />,
         document.getElementById('root'))
     }
   }

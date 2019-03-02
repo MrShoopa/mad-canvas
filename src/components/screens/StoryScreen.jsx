@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import MadLibHandler from '../MadLibHandler'
-
-export default class StoryScreen extends React.Component {
+export default class Story extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
@@ -11,12 +8,13 @@ export default class StoryScreen extends React.Component {
         }
     }
 
-    formatStory = ()
 
     render = () => {
+        var formattedView = this.formatStoryToString();
+
 
         return (
-            this.props.story
+            formattedView
         )
     }
 }
