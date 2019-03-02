@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 //import axios from 'axios'
 
-import logo, { ReactComponent } from './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 //import AuthButton from './components/AuthButton';
 import AuthIDInput from './components/AuthIDInput';

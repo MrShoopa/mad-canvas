@@ -28,6 +28,6 @@ export default class MadLibHandler extends React.Component {
     }
 
     render() {
-        return (<i>lol</i>)
+        return (<i></i>)
     }
 }
