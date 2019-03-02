@@ -17,6 +17,14 @@ import Story from './components/resources/Story'
 class App extends Component {
 
   checkID = async () => {
+    // Canvas auth and fetch
+    if (!(credentials.canvas.access_token === "")) {
+      await this.CanvasDataHandler.setState({ credentials: credentials.canvas })
+
+      var canvas_data = await this.CanvasDataHandler.fetchCourses()
+    }
+
+
     if (!(credentials.canvas.access_token === "")) {
       var generatedMadLib = await this.MadLibHandler.fetchStory()
 
@@ -77,7 +85,8 @@ class App extends Component {
           </p>
         </footer>
         <MadLibHandler onRef={ref => (this.MadLibHandler = ref)} />
-        <CanvasDataHandler onRef={ref => (this.CanvasDataHandler = ref)} />
+        <CanvasDataHandler onRef={ref => (this.CanvasDataHandler = ref)}
+          canvas_access_token={credentials.canvas.access_token} />
       </div>
 
     );

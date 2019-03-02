@@ -81,7 +81,6 @@ export default class MadLibHandler extends React.Component {
 
         var dice = Math.floor(Math.random() * random_words.adjective.length);
 
-        console.log(dice)
         return random_words.adjective[dice]
     }
     fetchRandomVerb = () => {
