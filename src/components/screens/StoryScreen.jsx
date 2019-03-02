@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Story extends React.Component {
+export default class StoryScreen extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
