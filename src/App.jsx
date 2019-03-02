@@ -19,6 +19,7 @@ class App extends Component {
     console.log('sadfas')
     if (!(credentials.canvas.access_token === "")) {
       var generatedMadLib = await this.MadLibHandler.fetchStory()
+      generatedMadLib = await this.MadLibHandler.modifyBlanks(generatedMadLib, ['lel'])
 
       ReactDOM.render(<Story story={generatedMadLib} />,
         document.getElementById('root'))
