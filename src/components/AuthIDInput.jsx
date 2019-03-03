@@ -5,10 +5,10 @@ import logo from './ui/assets/img/canvas_logos/Canvas/png/Canvas_color_web.png'
 import credentials from '../auth/credentials.json'
 
 class AuthIDInput extends Component {
-  setOAuthKey = () => {
-    let newCreds = document.getElementById('user-id-input').value
+  setOAuthKey = async () => {
+    let newCreds = await document.getElementById('user-id-input').value
 
-    credentials.canvas.id = newCreds;
+    credentials.canvas.access_token = newCreds;
     console.log(credentials.canvas.access_token)
   }
 
