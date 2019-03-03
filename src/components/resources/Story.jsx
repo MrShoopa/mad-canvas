@@ -29,7 +29,7 @@ export default class Story extends React.Component {
 
         }
 
-        console.log(`Generated HTML for Mad Lib ${formattedStoryString}`)
+        console.log(`Generated Mad Lib Story: \n${formattedStoryString}`)
         return formattedStoryString
     }
 
