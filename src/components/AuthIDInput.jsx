@@ -16,7 +16,7 @@ class AuthIDInput extends Component {
   render() {
     return (
       <div className=""
-        style={{ display: 'inline-flex', alignItems: 'center' }}>
+        style={{ alignItems: 'center' }}>
 
         <img src={logo} alt="Canvas Logo missin" style={{ transform: 'scale(.5)' }}>
         </img>

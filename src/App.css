@@ -37,8 +37,18 @@
 }
 
 .Onboard-body {
-  align-content: center;
-  vertical-align: center;
+  bottom: 50%;
+  position: absolute;
+  text-align: center;
+
+  align-items: center;
+  width: 100%;
+
+
+}
+
+.hint-caption {
+  animation: text-slide-up-empty-full 2s;
 }
 
 @keyframes App-logo-spin {

@@ -21,24 +21,26 @@ class App extends Component {
     if (!(credentials.canvas.access_token === "")) {
       await this.CanvasDataHandler.setState({ credentials: credentials.canvas })
 
-      var canvas_data = await this.CanvasDataHandler.fetchCourses()
-    }
+      if (await this.CanvasDataHandler.fetchAccounts() === null)
+        document.getElementById('case-message').innerHTML = `Account not found...`
+      else {
+        var generatedMadLib = await this.MadLibHandler.fetchStory()
 
+        console.log(generatedMadLib.blanks)
+        var canvasBlankFillers = await this.matchBlanksFromCanvas(generatedMadLib.blanks)
 
-    if (!(credentials.canvas.access_token === "")) {
-      var generatedMadLib = await this.MadLibHandler.fetchStory()
+        generatedMadLib = await this.MadLibHandler.modifyBlanks(generatedMadLib, canvasBlankFillers)
 
-      console.log(generatedMadLib.blanks)
-      var canvasBlankFillers = await this.matchBlanksFromCanvas(generatedMadLib.blanks)
+        ReactDOM.render(<Story story={generatedMadLib} />,
+          document.getElementById('root'))
+      }
+    } else {
 
-      generatedMadLib = await this.MadLibHandler.modifyBlanks(generatedMadLib, canvasBlankFillers)
-
-      ReactDOM.render(<Story story={generatedMadLib} />,
-        document.getElementById('root'))
     }
   }
 
   matchBlanksFromCanvas = async (blanks) => {
+    let dice = Math.floor(Math.random() * 3)
     let newBlanks = blanks
 
 
@@ -47,13 +49,19 @@ class App extends Component {
         blanks[i] = this.CanvasDataHandler.fetchRandomCourse()
       }
       if (blanks[i] === 'noun') {
-        blanks[i] = this.MadLibHandler.fetchRandomNoun()
+        //if (dice === 1) blanks[i] = this.CanvasDataHandler.fetchRandomCourse().name
+        //if (dice === 2) blanks[i] = this.CanvasDataHandler.fetchRandomAssignment().name
+        //if (dice === 3) blanks[i] = this.CanvasDataHandler.fetchRandomModule().name
       }
       if (blanks[i] === 'verb') {
         blanks[i] = this.MadLibHandler.fetchRandomVerb()
       }
       if (blanks[i] === 'adjective') {
         blanks[i] = this.MadLibHandler.fetchRandomAdjective()
+      }
+      if (blanks[i] === 'animal') {
+        blanks[i] = 'husky'
+        //blanks[i] = this.state.mascot
       }
 
       //TODO: All other cases
@@ -77,11 +85,12 @@ class App extends Component {
           <div onClick={() => this.checkID()}>
             <AuthIDInput />
           </div>
+          <p id='case-message' className='hint-caption'>Input Access Token to begin.</p>
         </div>
 
         <footer className="App-footer" >
           <p>
-            Created by Joe Villegas.
+            Created by Joe Villegas
           </p>
         </footer>
         <MadLibHandler onRef={ref => (this.MadLibHandler = ref)} />
