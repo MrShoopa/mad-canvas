@@ -57,3 +57,16 @@
         opacity: 1;
     }
 }
+
+@keyframes slideup-card {
+    0% {
+        opacity: 0;
+        transform: translateX(-0%) translateY(75%);
+    }
+
+
+    100% {
+        opacity: 1;
+        transform: translateX(-00%) translateY(-00%);
+    }
+}

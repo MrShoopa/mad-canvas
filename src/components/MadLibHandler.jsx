@@ -59,33 +59,13 @@ export default class MadLibHandler extends React.Component {
         var dice = Math.floor(Math.random() * random_words.noun.length);
 
         return random_words.noun[dice]
-
-        //TODO: Be able to accept user input
-        if (dice < 2) {
-            return this.CanvasDataHandler.fetchRandomCourse
-        } else if (dice < 4) {
-            return this.CanvasDataHandler.fetchRandomAssignment
-        } else if (dice < 6) {
-            return this.CanvasDataHandler.fetchRandomQuiz
-        } else if (dice < 8) {
-            return this.CanvasDataHandler.fetchRandomGroup
-        } else if (dice < 10) {
-            return this.CanvasDataHandler.fetchRandomStudent
-        } else if (dice < 12) {
-            return this.CanvasDataHandler.fetchRandomAdmin
-
-        }
     }
     fetchRandomAdjective = () => {
-        //TODO: Be able to accept user input
-
         var dice = Math.floor(Math.random() * random_words.adjective.length);
 
         return random_words.adjective[dice]
     }
     fetchRandomVerb = () => {
-        //TODO: Be able to accept user input
-
         var dice = Math.floor(Math.random() * random_words.verb.length);
 
         return random_words.verb[dice]

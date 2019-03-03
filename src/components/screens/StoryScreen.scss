@@ -1,0 +1,28 @@
+body {
+    //font-family: 'Lora', serif;
+}
+
+.Story-card {
+    font-family: 'Lora', serif;
+    height: 65vh;
+    width: 80vw;
+    top: 10%;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+
+    position: absolute;
+    margin: 0 auto;
+    text-align: center;
+
+    background-color: aliceblue;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 10px 30px 0px;
+
+    animation: slideup-card 1.5s;
+
+
+    .children {
+        padding: 30px;
+    }
+}

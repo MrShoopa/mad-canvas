@@ -11,7 +11,7 @@ import CanvasDataHandler from './components/CanvasDataHandler'
 
 import credentials from './auth/credentials.json'
 
-import Story from './components/resources/Story'
+import StoryScreen from './components/screens/StoryScreen'
 
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
     if (!(credentials.canvas.access_token === "")) {
       await this.CanvasDataHandler.setState({ credentials: credentials.canvas })
 
-      if (await this.CanvasDataHandler.fetchAccounts() === null)
+      if (false) //await this.CanvasDataHandler.fetchAccounts() === null)
         document.getElementById('case-message').innerHTML = `Account not found...`
       else {
         var generatedMadLib = await this.MadLibHandler.fetchStory()
@@ -31,7 +31,7 @@ class App extends Component {
 
         generatedMadLib = await this.MadLibHandler.modifyBlanks(generatedMadLib, canvasBlankFillers)
 
-        ReactDOM.render(<Story story={generatedMadLib} />,
+        ReactDOM.render(<StoryScreen story={generatedMadLib} />,
           document.getElementById('root'))
       }
     } else {
@@ -46,7 +46,7 @@ class App extends Component {
 
     for (var i = 0; i < blanks.length; i++) {
       if (blanks[i] === 'a place' || blanks[i] === 'foreign country') {
-        blanks[i] = this.CanvasDataHandler.fetchRandomCourse()
+        //blanks[i] = this.CanvasDataHandler.fetchRandomCourse()
       }
       if (blanks[i] === 'noun') {
         //if (dice === 1) blanks[i] = this.CanvasDataHandler.fetchRandomCourse().name
@@ -95,7 +95,7 @@ class App extends Component {
         </footer>
         <MadLibHandler onRef={ref => (this.MadLibHandler = ref)} />
         <CanvasDataHandler onRef={ref => (this.CanvasDataHandler = ref)}
-          canvas_access_token={credentials.canvas.access_token} />
+          canvas_access_token={credentials.canvas.access_token_sample} />
       </div>
 
     );
