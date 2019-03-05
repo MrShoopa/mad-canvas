@@ -8,7 +8,7 @@ class AuthIDInput extends Component {
   setOAuthKey = async () => {
     let newCreds = await document.getElementById('user-id-input').value
 
-    credentials.canvas.access_token = newCreds;
+    credentials.canvas.access_token = await newCreds;
     console.log(credentials.canvas.access_token)
   }
 
@@ -22,7 +22,9 @@ class AuthIDInput extends Component {
         </img>
 
         <div>
-          <input placeholder="Input Access Token here!" id="user-id-input" type="text" name="Input oAuthKey"></input>
+          <input placeholder="Input Access Token here!" id="user-id-input"
+            type="text" name="Input oAuthKey"
+          ></input>
           <input type="submit" onClick={() => this.setOAuthKey()}></input>
         </div>
       </div>

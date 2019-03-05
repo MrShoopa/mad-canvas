@@ -21,17 +21,17 @@ class App extends Component {
     if (!(credentials.canvas.access_token === "")) {
       await this.CanvasDataHandler.setState({ credentials: credentials.canvas })
 
-      if (false) //await this.CanvasDataHandler.fetchAccounts() === null)
+      if (true) //await this.CanvasDataHandler.fetchAccounts() === null)
         document.getElementById('case-message').innerHTML = `Account not found...`
       else {
-        var generatedMadLib = await this.MadLibHandler.fetchStory()
+        var madlibObject = await this.MadLibHandler.fetchStory()
 
-        console.log(generatedMadLib.blanks)
-        var canvasBlankFillers = await this.matchBlanksFromCanvas(generatedMadLib.blanks)
+        console.log(madlibObject.blanks)
+        var canvasBlankFillers = await this.matchBlanksFromCanvas(madlibObject.blanks)
 
-        generatedMadLib = await this.MadLibHandler.modifyBlanks(generatedMadLib, canvasBlankFillers)
+        var generatedMadLib = await this.MadLibHandler.modifyBlanks(madlibObject, canvasBlankFillers)
 
-        ReactDOM.render(<StoryScreen story={generatedMadLib} />,
+        ReactDOM.render(<StoryScreen story={generatedMadLib} title={madlibObject.title} />,
           document.getElementById('root'))
       }
     } else {

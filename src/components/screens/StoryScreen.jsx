@@ -14,6 +14,10 @@ export default class StoryScreen extends React.Component {
     }
 
 
+    generateNewStory = () => {
+
+    }
+
     render = () => {
 
         return (
@@ -25,12 +29,12 @@ export default class StoryScreen extends React.Component {
                 </header>
                 <div className="Story-card">
                     <div className="children">
+                        <h1> {this.props.title}</h1>
                         <Story story={this.props.story} />
                     </div>
                 </div>
                 <footer className="App-footer" >
                     <p>
-                        Your Story!
                     </p>
                 </footer>
             </div>
