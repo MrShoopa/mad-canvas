@@ -21,7 +21,7 @@ class App extends Component {
     if (!(credentials.canvas.access_token === "")) {
       await this.CanvasDataHandler.setState({ credentials: credentials.canvas })
 
-      if (true) //await this.CanvasDataHandler.fetchAccounts() === null)
+      if (await this.CanvasDataHandler.fetchAccounts() === null)
         document.getElementById('case-message').innerHTML = `Account not found...`
       else {
         var madlibObject = await this.MadLibHandler.fetchStory()
