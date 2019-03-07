@@ -159,7 +159,7 @@ export default class CanvasDataHandler extends React.Component {
         var token_string = `?access_token=${token}`
         var type_string = `/api/v1/accounts`
 
-        await Axios.get(`${install_url + type_string + token_string}`, {
+        let account_exists = await Axios.get(`${install_url + type_string + token_string}`, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
@@ -172,8 +172,9 @@ export default class CanvasDataHandler extends React.Component {
             }).catch(err => {
                 console.error(err)
                 console.log('Canvas account not found.')
-                return null
+                return false
             })
+        if (!account_exists) return null;
 
         return this.state.data.accounts
     }
