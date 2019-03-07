@@ -1,13 +1,19 @@
 {
+  "name": "Canvas Mad Libs",
   "short_name": "Mad Canvas",
-  "name": "Mad Libs Canvas Generator",
   "icons": [{
-    "src": "favicon.ico",
-    "sizes": "64x64 32x32 24x24 16x16",
-    "type": "image/x-icon"
-  }],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "app-icon.png",
+      "type": "image/png",
+      "sizes": "512x512 256x256"
+    }
+  ],
+  "background_color": "#003a69",
+  "display": "minimal-ui",
+  "scope": "/",
+  "start_url": "/"
 }
