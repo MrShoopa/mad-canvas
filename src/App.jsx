@@ -17,56 +17,74 @@ import StoryScreen from './components/screens/StoryScreen'
 class App extends Component {
 
   checkID = async () => {
-    // Canvas auth and fetch
-    if (!(credentials.canvas.access_token === "")) {
-      await this.CanvasDataHandler.setState({ credentials: credentials.canvas })
 
-      if (await this.CanvasDataHandler.fetchAccounts() === null)
+    if (!(credentials.canvas.access_token === "")) {
+
+      if (await this.CanvasDataHandler.fetchAccounts() !== null)
         document.getElementById('case-message').innerHTML = `Account not found...`
       else {
+        document.getElementById('case-message').innerHTML = `Account found...`
         var madlibObject = await this.MadLibHandler.fetchStory()
-
-        console.log(madlibObject.blanks)
+        console.log('called');
         var canvasBlankFillers = await this.matchBlanksFromCanvas(madlibObject.blanks)
 
         var generatedMadLib = await this.MadLibHandler.modifyBlanks(madlibObject, canvasBlankFillers)
 
         ReactDOM.render(<StoryScreen story={generatedMadLib} title={madlibObject.title} />,
           document.getElementById('root'))
-      }
-    } else {
 
+      }
     }
   }
 
+
   matchBlanksFromCanvas = async (blanks) => {
-    let dice = Math.floor(Math.random() * 3)
+    let dice = 1 //TODO: Math.floor(Math.random() * 3)
     let newBlanks = blanks
 
+    let data = await this.CanvasDataHandler.formData()
 
-    for (var i = 0; i < blanks.length; i++) {
-      if (blanks[i] === 'a place' || blanks[i] === 'foreign country') {
-        //blanks[i] = this.CanvasDataHandler.fetchRandomCourse()
-      }
-      if (blanks[i] === 'noun') {
-        //if (dice === 1) blanks[i] = this.CanvasDataHandler.fetchRandomCourse().name
-        //if (dice === 2) blanks[i] = this.CanvasDataHandler.fetchRandomAssignment().name
-        //if (dice === 3) blanks[i] = this.CanvasDataHandler.fetchRandomModule().name
-      }
-      if (blanks[i] === 'verb') {
-        blanks[i] = this.MadLibHandler.fetchRandomVerb()
-      }
-      if (blanks[i] === 'adjective') {
-        blanks[i] = this.MadLibHandler.fetchRandomAdjective()
-      }
-      if (blanks[i] === 'animal') {
-        blanks[i] = 'husky'
-        //blanks[i] = this.state.mascot
+    let blankParsing = async () => {
+      for (var i = 0; i < newBlanks.length; i++) {
+        if (newBlanks[i] === 'a place' || newBlanks[i] === 'foreign country') {
+          newBlanks[i] = await data.courses[0].name
+        }
+        if (newBlanks[i] === 'noun') {
+
+          if (dice === 1) {
+            let item = await this.CanvasDataHandler.fetchRandomCourse()
+            newBlanks[i] = item.name
+          }
+          if (dice === 2) {
+            let item = await this.CanvasDataHandler.fetchRandomAssignment()
+            newBlanks[i] = item.name
+          }
+          if (dice === 3) {
+            let item = await this.CanvasDataHandler.fetchRandomModule()
+            newBlanks[i] = item.name
+          }
+        }
+        if (newBlanks[i] === 'verb') {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
+        }
+        if (newBlanks[i] === 'adjective') {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomAdjective()
+        }
+        if (newBlanks[i] === 'animal') {
+          newBlanks[i] = 'husky'
+          //newBlanks[i] = this.state.mascot
+        }
+
+
+        //TODO: All other cases
       }
 
-      //TODO: All other cases
+      console.log('finished parsing')
     }
 
+    await blankParsing()
+
+    console.log(newBlanks)
     return newBlanks
 
   }
@@ -82,9 +100,8 @@ class App extends Component {
         </header>
 
         <div className="Onboard-body">
-          <div onClick={() => this.checkID()}>
-            <AuthIDInput />
-          </div>
+          <AuthIDInput onRef={ref => (this.AuthIDInput = ref)}
+            onClick={() => this.checkID()} />
           <p id='case-message' className='hint-caption'>Input Access Token to begin.</p>
         </div>
 
@@ -94,8 +111,7 @@ class App extends Component {
           </p>
         </footer>
         <MadLibHandler onRef={ref => (this.MadLibHandler = ref)} />
-        <CanvasDataHandler onRef={ref => (this.CanvasDataHandler = ref)}
-          canvas_access_token={credentials.canvas.access_token_sample} />
+        <CanvasDataHandler onRef={ref => (this.CanvasDataHandler = ref)} />
       </div>
 
     );
