@@ -5,20 +5,37 @@ import logo from './ui/assets/img/canvas_logos/Canvas/png/Canvas_color_web.png'
 import credentials from '../auth/credentials.json'
 
 class AuthIDInput extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      keySet: false
+    }
+  }
   setOAuthKey = async () => {
     let newCreds = await document.getElementById('user-id-input').value
 
     credentials.canvas.access_token = await newCreds;
     console.log(credentials.canvas.access_token)
+
+    await this.setState({ keySet: true });
+
+    await this.props.onClick()
   }
 
+
+  checkInput = () => {
+    if (credentials.canvas.access_token !== "")
+      return true
+    else
+      return false;
+  }
 
   render() {
     return (
       <div className=""
         style={{ alignItems: 'center' }}>
 
-        <img src={logo} alt="Canvas Logo missin" style={{ transform: 'scale(.5)' }}>
+        <img src={logo} alt="Canvas Logo" style={{ transform: 'scale(.5)' }}>
         </img>
 
         <div>
