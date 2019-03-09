@@ -32,6 +32,7 @@ export default class MadLibHandler extends React.Component {
     }
 
     modifyBlanks = async (story, context = ['LAMOA']) => {
+        console.log(story)
         var newBlanks = story.blanks
 
         if (story.blanks == null || story.value == null) {
@@ -39,12 +40,8 @@ export default class MadLibHandler extends React.Component {
             return "Not a Story Object"
         }
 
-        for (var i = 0; i < story.blanks.length; i++) {
-            if (!(i >= context.length)) {
-                newBlanks[i] = context[i]
-            } else {
-                newBlanks[i] = context[context.length - 1]
-            }
+        for (var i = 0; i < story.blanks.length - 1; i++) {
+            newBlanks[i] = context[i]
 
         }
 
@@ -59,6 +56,11 @@ export default class MadLibHandler extends React.Component {
         var dice = Math.floor(Math.random() * random_words.noun.length);
 
         return random_words.noun[dice]
+    }
+    fetchRandomPluralNoun = () => {
+        var dice = Math.floor(Math.random() * random_words.plural_noun.length);
+
+        return random_words.plural_noun[dice]
     }
     fetchRandomAdjective = () => {
         var dice = Math.floor(Math.random() * random_words.adjective.length);
