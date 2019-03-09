@@ -25,7 +25,7 @@ class App extends Component {
       else {
         document.getElementById('case-message').innerHTML = `Account found...`
         var madlibObject = await this.MadLibHandler.fetchStory()
-        console.log('called');
+
         var canvasBlankFillers = await this.matchBlanksFromCanvas(madlibObject.blanks)
 
         var generatedMadLib = await this.MadLibHandler.modifyBlanks(madlibObject, canvasBlankFillers)
@@ -39,7 +39,7 @@ class App extends Component {
 
 
   matchBlanksFromCanvas = async (blanks) => {
-    let dice = 1 //TODO: Math.floor(Math.random() * 3)
+    let dice = Math.floor(Math.random() * 4)
     let newBlanks = blanks
 
     let data = await this.CanvasDataHandler.formData()
@@ -57,6 +57,7 @@ class App extends Component {
           }
           if (dice === 2) {
             let item = await this.CanvasDataHandler.fetchRandomAssignment()
+            console.log(item.name)
             newBlanks[i] = item.name
           }
           if (dice === 3) {

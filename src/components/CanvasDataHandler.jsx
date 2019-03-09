@@ -62,7 +62,6 @@ export default class CanvasDataHandler extends React.Component {
         return data
     }
 
-    //TODO: FIX assignments
     fetchAssignments = async (course_id = this.fetchRandomCourseID(),
         token = credentials.canvas.access_token,
         install_url = credentials.canvas.install_url) => {
@@ -75,11 +74,12 @@ export default class CanvasDataHandler extends React.Component {
             this.props.headers
         )
             .then(res => {
-                console.log(`Assignments found:`)
-                console.log(res.data)
-                if (res.data === null) return null
-                return res.data
+                //console.log(course_id)
+                console.log(`Assignments found in ${course_id}: ${res.data.length}`)
+                if (res.data.length === 0) return null
 
+
+                return res.data
                 this.state.data.assignments.push({
                     course_id: `${course_id}`,
                     course_assignments: res
@@ -117,19 +117,23 @@ export default class CanvasDataHandler extends React.Component {
         var token_string = `?access_token=${token}`
         var type_string = `/api/v1/courses/${await course_id}/modules`
 
-        await Axios.get(`${this.props.proxy_url +
+        const data = await Axios.get(`${this.props.proxy_url +
             install_url + type_string + token_string}`,
             this.props.headers
         )
             .then(res => {
                 console.log(res.data)
+                console.log(`Modules found in ${course_id}: ${res.data.length}`)
+
+
+                return res.data
                 this.state.data.modules.push({
                     course_id: `${course_id}`,
                     course_modules: res
                 })
             })
 
-        return this.state.data.modules
+        return data
     }
     fetchStudents = async (course_id = this.fetchRandomCourseID(),
         token = credentials.canvas.access_token,
@@ -256,7 +260,13 @@ export default class CanvasDataHandler extends React.Component {
 
         let dice = Math.floor(Math.random() * course_list.length)
 
-        console.log(course_list[dice])
+        let logInfo = () => {
+            console.log(course_list)
+            console.log('fetched random course')
+            console.log(course_list[dice])
+        }
+
+        //logInfo()
         return course_list[dice]
         //TODO: NULL CASES 
     }
@@ -294,32 +304,36 @@ export default class CanvasDataHandler extends React.Component {
             assignment_list = await this.fetchAssignments()
 
 
-        let dice
-        for (var i = 0; i < assignment_list.length; i++)
-            dice += Math.floor(Math.random(assignment_list.length))
+        let logInfo = () => {
+            console.log(assignment_list)
+            console.log('fetched random assignment')
+            console.log(assignment_list[dice])
+        }
 
-        let comb_index = 0;
-        for (i = 0; i < assignment_list.length; i++)
-            for (var j = 0; j < assignment_list[i].course_assignments.length; j++)
-                if (comb_index === dice) return assignment_list[i].course_assignments[j]
-                else comb_index++
+
+        let dice = Math.floor(Math.random() * assignment_list.length)
 
         console.log('fetched random assignment')
-        return assignment_list[0].course_assignments[0]
+        return assignment_list[dice]
     }
-    fetchRandomModule = () => {
-        let dice
-        for (var i = 0; i < this.state.data.modules.length; i++)
-            dice += Math.floor(Math.random(this.state.data.modules[i].length))
+    fetchRandomModule = async () => {
+        let module_list = null
 
-        let comb_index = 0;
-        for (i = 0; i < this.state.data.modules.length; i++)
-            for (var j = 0; j < this.state.data.modules[i].course_modules.length; j++)
-                if (comb_index === dice) return this.state.data.modules[i].course_modules[j]
-                else comb_index++
+        while (module_list == null)
+            module_list = await this.fetchAssignments()
 
-        console.log('fetched random module')
-        return this.state.data.modules[0].course_modules[0]
+
+        let logInfo = () => {
+            console.log(module_list)
+            console.log('fetched random module')
+            console.log(module_list[dice])
+        }
+
+
+        let dice = Math.floor(Math.random() * module_list.length)
+
+        //logInfo()
+        return module_list[dice]
     }
     fetchRandomRole = () => {
         let dice = Math.floor(Math.random(this.state.data.roles.length))
