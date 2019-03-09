@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 //import axios from 'axios'
 
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 //import AuthButton from './components/AuthButton';
 import AuthIDInput from './components/AuthIDInput';
@@ -39,31 +39,55 @@ class App extends Component {
 
 
   matchBlanksFromCanvas = async (blanks) => {
-    let dice = Math.floor(Math.random() * 4)
     let newBlanks = blanks
 
-    let data = await this.CanvasDataHandler.formData()
+    let data = await this.CanvasDataHandler.initializeData()
 
     let blankParsing = async () => {
       for (var i = 0; i < newBlanks.length; i++) {
+        let dice = Math.floor(Math.random() * 4 + 1)
+        //console.log(dice)
+
         if (newBlanks[i] === 'a place' || newBlanks[i] === 'foreign country') {
-          newBlanks[i] = await data.courses[0].name
+          let item = await this.CanvasDataHandler.fetchRandomCourse()
+          newBlanks[i] = item.name
         }
         if (newBlanks[i] === 'noun') {
 
-          if (dice === 1) {
-            let item = await this.CanvasDataHandler.fetchRandomCourse()
-            newBlanks[i] = item.name
+          let item = "llama"
+          switch (dice) {
+            case 1:
+              item = await this.CanvasDataHandler.fetchRandomCourse()
+              newBlanks[i] = item.name
+              break
+            case 2:
+              item = await this.CanvasDataHandler.fetchRandomAssignment()
+              newBlanks[i] = item.name
+              break
+            case 3:
+              item = await this.CanvasDataHandler.fetchRandomUser()
+              newBlanks[i] = item.name
+              break
+            case 4:
+              item = await this.CanvasDataHandler.fetchRandomGroup()
+              newBlanks[i] = item.name
+              break
+            //DISABLED (Look at dice variable)
+            case 9:
+              item = await this.CanvasDataHandler.fetchRandomModule()
+              newBlanks[i] = item.name
+              break
+            case 10:
+              item = await this.CanvasDataHandler.fetchSelfName()
+              newBlanks[i] = item.name
+              break
+            default:
+              console.log(item)
           }
-          if (dice === 2) {
-            let item = await this.CanvasDataHandler.fetchRandomAssignment()
-            console.log(item.name)
-            newBlanks[i] = item.name
-          }
-          if (dice === 3) {
-            let item = await this.CanvasDataHandler.fetchRandomModule()
-            newBlanks[i] = item.name
-          }
+
+        }
+        if (newBlanks[i] === 'plural noun') {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomPluralNoun()
         }
         if (newBlanks[i] === 'verb') {
           newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
@@ -73,14 +97,14 @@ class App extends Component {
         }
         if (newBlanks[i] === 'animal') {
           newBlanks[i] = 'husky'
-          //newBlanks[i] = this.state.mascot
+          //TODO: newBlanks[i] = this.state.mascot
         }
 
 
-        //TODO: All other cases
+        //TODO: More cases :)
       }
 
-      console.log('finished parsing')
+      console.log('Finished parsing blanks!')
     }
 
     await blankParsing()
