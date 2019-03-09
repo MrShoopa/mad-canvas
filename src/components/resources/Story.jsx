@@ -12,9 +12,15 @@ export default class Story extends React.Component {
         var formattedStoryString = ""
 
         for (let i = 0; i < this.props.story.value.length; i++) {
+            if (this.props.story.value.length > this.props.story.blanks.length
+                && i === this.props.story.value.length - 1)
+                break;  //  Last word is a blank
+
+
             let valueString = this.props.story.value[i]
             //console.log(valueString)
-            formattedStoryString += valueString
+            formattedStoryString += `${valueString} `
+
 
             if (i === this.props.story.value.length - 3) {
                 let lastValueString = this.props.story.value[i + 1]
@@ -25,7 +31,7 @@ export default class Story extends React.Component {
 
             let blankString = this.props.story.blanks[i]
             //console.log(blankString)
-            formattedStoryString += blankString
+            formattedStoryString += `${blankString} `
 
         }
 
@@ -38,7 +44,9 @@ export default class Story extends React.Component {
 
 
         return (
-            formattedView
+            <p className="Story-text">
+                {formattedView}
+            </p>
         )
     }
 }
