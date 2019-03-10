@@ -1,7 +1,13 @@
 import React from 'react'
 import Axios from 'axios'
+import AxiosRetry from 'axios-retry'
+
 
 import credentials from '../auth/credentials.json'
+
+
+AxiosRetry(Axios, { retries: 5 });
+
 
 /*
   How to use:
@@ -29,6 +35,17 @@ export default class CanvasDataHandler extends React.Component {
     componentWillUnmount = () => {
         //this.props.onRef(undefined)
     }
+
+    errorInterceptor = () => Axios.interceptors.response.use(
+        response => response,
+        error => {
+            const { status } = error.response;
+            if (status === 401) {
+                // Custom function
+            }
+            return Promise.reject(error);
+        }
+    );
 
     /*  Fetch Item Lists  */
     initializeData = async () => {
@@ -84,6 +101,9 @@ export default class CanvasDataHandler extends React.Component {
                     course_id: `${course_id}`,
                     course_assignments: res
                 })
+            }).catch(err => {
+                console.error(`Unable to fetch assignments from a course`)
+                if (err.response.status === 401) console.error(`Unauthorized from course ${course_id}`)
             })
 
         return data
@@ -106,6 +126,9 @@ export default class CanvasDataHandler extends React.Component {
                     course_id: `${course_id}`,
                     course_quizzes: res
                 })
+            }).catch(err => {
+                console.error(`Unable to fetch quizzes from a course`)
+                if (err.response.status === 401) console.error(`Unauthorized from course ${course_id}`)
             })
 
         return this.state.data.quizzes
@@ -131,6 +154,9 @@ export default class CanvasDataHandler extends React.Component {
                     course_id: `${course_id}`,
                     course_modules: res
                 })
+            }).catch(err => {
+                console.error(`Unable to fetch modules from a course`)
+                if (err.response.status === 401) console.error(`Unauthorized from course ${course_id}`)
             })
 
         return data
@@ -147,14 +173,17 @@ export default class CanvasDataHandler extends React.Component {
             this.props.headers
         )
             .then(res => {
-                console.log(res.data)
-                console.log(`Users found in ${course_id}: ${res.data.length} `)
+                //console.log(res.data)
+                //console.log(`Users found in ${course_id}: ${res.data.length} `)
 
                 return res.data
                 this.state.data.users.push({
                     course_id: `${course_id}`,
                     course_users: res
                 })
+            }).catch(err => {
+                console.error(`Unable to fetch users from a course`)
+                if (err.response.status === 401) console.error(`Unauthorized from course ${course_id}`)
             })
 
         return data
@@ -179,11 +208,11 @@ export default class CanvasDataHandler extends React.Component {
                     this.state.data.accounts = res
                 }).catch(err => {
                     console.error(err)
-                    console.log('Canvas accounts not found.')
+                    console.log('Canvas accounts not found. Not admin?')
                     return false
                 })
-        if (!account_exists) return null;
 
+        if (!account_exists) return null;
 
         return this.state.data.accounts
     }
@@ -234,6 +263,9 @@ export default class CanvasDataHandler extends React.Component {
                     course_id: `${course_id}`,
                     course_students: res
                 })
+            }).catch(err => {
+                console.error(`Unable to fetch students from a course`)
+                if (err.response.status === 401) console.error(`Unauthorized from course ${course_id}`)
             })
 
         return data
@@ -257,6 +289,9 @@ export default class CanvasDataHandler extends React.Component {
                     course_id: `${course_id}`,
                     course_teachers: res
                 })
+            }).catch(err => {
+                console.error(`Unable to fetch teachers from a course`)
+                if (err.response.status === 401) console.error(`Unauthorized from course ${course_id}`)
             })
 
         return this.state.data.teachers
