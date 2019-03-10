@@ -12,8 +12,9 @@
       "sizes": "512x512 256x256"
     }
   ],
-  "background_color": "#003a69",
+  "background_color": "#282c34",
+  "theme_color": "#8b0900",
   "display": "minimal-ui",
   "scope": "/",
-  "start_url": "/"
+  "start_url": "https://mrshoopa.github.io/mad-canvas/"
 }
