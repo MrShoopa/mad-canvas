@@ -39,7 +39,8 @@ class AuthIDInput extends Component {
         </img>
 
         <div>
-          <input placeholder="Input Access Token here!" id="user-id-input"
+          <label for="user-id-input">Access Token: </label>
+          <input placeholder={credentials.canvas.access_token_sample} id="user-id-input"
             type="text" name="Input oAuthKey"
           ></input>
           <input type="submit" onClick={() => this.setOAuthKey()}></input>
