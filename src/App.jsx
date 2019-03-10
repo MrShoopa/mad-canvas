@@ -42,7 +42,7 @@ class App extends Component {
 
   matchBlanksFromCanvas = async (blanks) => {
     let newBlanks = blanks
-    console.log(blanks)
+    //console.log(blanks)
 
     let data = await this.CanvasDataHandler.initializeData()
 
@@ -50,6 +50,9 @@ class App extends Component {
       for (var i = 0; i < newBlanks.length; i++) {
         let dice = Math.floor(Math.random() * 4 + 1)
         //console.log(dice)
+
+        //console.log(newBlanks[i])
+        if (typeof newBlanks[i] === "undefined") break
 
         /*  Generic Items */
         if (newBlanks[i] === 'noun') {
@@ -92,6 +95,9 @@ class App extends Component {
         if (newBlanks[i] === 'verb') {
           newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
         }
+        if (newBlanks[i] === 'adverb') {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomAdverb()
+        }
         if (newBlanks[i] === 'past tense verb') {
           newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
         }
@@ -102,7 +108,7 @@ class App extends Component {
           newBlanks[i] = await this.MadLibHandler.fetchRandomAdjective()
         }
 
-        console.log(newBlanks[i])
+
         /* Category-Specific Items */
         if (newBlanks[i] === 'a place' || newBlanks[i] === 'foreign country') {
           let item = await this.CanvasDataHandler.fetchRandomCourse()

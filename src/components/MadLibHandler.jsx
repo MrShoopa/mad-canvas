@@ -33,7 +33,6 @@ export default class MadLibHandler extends React.Component {
 
     /*  Modification functions  */
     modifyBlanks = async (story, context = ['LAMOA']) => {
-        console.log(story)
         var newBlanks = story.blanks
 
         if (story.blanks == null || story.value == null) {
@@ -47,6 +46,8 @@ export default class MadLibHandler extends React.Component {
 
         story.blanks = newBlanks
 
+        console.log('Modified Mad Lib:')
+        console.log(story)
         return story
     }
 
@@ -66,6 +67,11 @@ export default class MadLibHandler extends React.Component {
         var dice = Math.floor(Math.random() * random_words.adjective.length);
 
         return random_words.adjective[dice]
+    }
+    fetchRandomAdverb = () => {
+        var dice = Math.floor(Math.random() * random_words.adverb.length);
+
+        return random_words.adverb[dice]
     }
     fetchRandomVerb = () => {
         var dice = Math.floor(Math.random() * random_words.verb.length);
