@@ -230,8 +230,8 @@ export default class CanvasDataHandler extends React.Component {
             .then(res => {
                 this.state.data.groups = res.data
 
-                console.log('Groups found in user: ')
-                console.log(this.state.data.groups)
+                //console.log('Groups found in user: ')
+                //console.log(this.state.data.groups)
                 return res.data
             })
 
