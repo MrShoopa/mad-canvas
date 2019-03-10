@@ -1,35 +1,26 @@
 {
     "noun": [
-        "hunting ground",
-        "kitty",
-        "marketing idea",
-        "toaster",
-        "dingle berry",
-        "keepsake machete",
-        "dragon",
-        "toilet seat",
-        "laser beams",
-        "hissy fit",
-        "multi-billionaire",
-        "bat-shit crazy Amish folk",
-        "brewery-fresh sleazeball"
+        "LAMOA",
+        "O'Reilys",
+        "autopart",
+        "hunting ground", "kitty", "marketing idea", "toaster", "dingle berry", "keepsake machete", "dragon", "toilet seat", "laser beams", "hissy fit", "multi-billionaire", "bat-shit crazy Amish folk",
+        "brewery-fresh sleazeball", "trouble", "chess", "teaching", "sugar", "popcorn", "governor", "nest", "pest", "road", "increase", "birthday", "ice", "crow", "coat", "direction", "cherry", "floor", "fuel", "hook", "monkey", "porter", "kittens", "winter", "truck", "fairies", "pen", "friction", "toes", "tree", "tramp", "tax", "bushes", "shoe", "creature", "cover", "ink", "frame", "hospital", "smash", "dock", "business", "detail", "approval", "show", "sheep", "quilt", "songs", "nose", "table", "payment", "edge", "veil", "juice", "stamp", "knot", "scarf", "sheet", "summer", "son", "hair", "church", "roof", "meeting", "burst", "view", "noise", "pies", "cloth", "flowers", "size", "lock", "trade", "yam", "debt", "soap", "walk", "industry", "bear", "punishment", "spiders", "sea", "bead", "cakes", "coal", "yak", "carriage", "lunch", "amount", "religion", "camp", "cast", "current", "rake", "hat", "butter", "chance", "behavior", "wind", "appliance", "woman"
     ],
     "verb": [
-        "surround",
-        "blindside",
-        "run over",
-        "soft soap",
-        "splatter",
-        "scatter",
-        "medicate",
-        "smack",
-        "imprison",
-        "butter up",
-        "dispute",
-        "castigate",
-        "taunt"
+        "park", "own", "boil", "need", "scold", "brush", "dream", "greet", "sparkle", "hurry", "long", "sneeze", "depend", "disagree", "man", "repeat", "nod", "treat", "happen", "force", "joke", "box", "gaze", "knit", "spot", "chase", "bomb", "reject", "advise", "attempt", "knot", "milk", "question", "stroke", "fry", "film", "stir", "suspend", "flower", "reduce", "type", "remain", "tick", "unfasten", "include", "snow", "invite", "compare", "flap", "snatch", "tap", "attack", "store", "wail", "suck", "relax", "delay", "paint", "retire", "place", "haunt", "suggest", "wave", "settle", "chew", "calculate", "challenge", "comb", "pinch", "cry", "alert", "race", "notice", "kneel", "shade", "desert", "hug", "want", "paddle", "influence", "develop", "shop", "play", "release", "memorise", "rock", "trade", "suppose", "announce", "bruise", "jump", "mend", "jam", "regret", "test", "blot", "smile", "continue", "hum", "approve"
+    ],
+    "adverb": [
+        "meme-ely",
+        "bootleggedly",
+        "sadly",
+        "cryingly",
+        "boastfully", "yearningly", "sweetly", "overconfidently", "madly", "questionably", "limply", "forth", "helplessly", "properly", "almost", "fervently", "calmly", "voluntarily", "often", "weekly", "actually", "defiantly", "usefully", "intently", "noisily", "positively", "bashfully", "silently", "famously", "punctually", "wonderfully", "slowly", "deliberately", "however", "instead", "victoriously", "necessarily", "elegantly", "solemnly", "lively", "essentially", "upright", "briskly", "curiously", "safely", "politely", "zestily", "mechanically", "bleakly", "quicker", "delightfully", "elsewhere", "youthfully", "directly"
     ],
     "adjective": [
+        "yeezing",
+        "meme-y",
+        "fire",
+        "bomb",
         "dead",
         "out of control",
         "sexy",
@@ -42,23 +33,61 @@
         "idiotic",
         "magical",
         "insecure",
-        "disgusting"
+        "disgusting", "motionless", "pretty", "scandalous", "gigantic", "open", "mushy", "expensive", "magnificent", "deep", "bent", "hanging", "aloof", "wooden", "hysterical", "outstanding", "large", "bawdy", "stereotyped", "joyous", "racial", "horrible", "oceanic", "flat", "brown", "dependent", "glamorous", "easy", "mere", "squealing", "uptight", "ethereal", "big", "limping", "placid", "grumpy", "spectacular", "whimsical", "boundless", "happy", "domineering", "fragile", "teeny", "capricious", "gifted", "chief", "agonizing", "painstaking", "rich", "tasty", "well-to-do", "silky", "utopian", "panicky", "functional", "complete", "thundering", "parched", "adaptable", "spiteful", "excellent", "cluttered", "grubby", "needy", "maddening", "unsuitable", "yielding", "handsomely", "actually", "serious", "excited", "left", "dazzling", "fearless", "brief", "nine", "gamy", "possible", "bored", "filthy", "loving", "violet", "clever", "talented", "belligerent", "boiling", "incredible", "marked", "annoyed", "scrawny", "cooing", "auspicious", "cloistered", "tested", "unbecoming", "friendly", "acceptable", "wicked", "raspy", "tough", "magenta"
     ],
     "plural_noun": [
-        "geese",
-        "ducks",
-        "men",
-        "brushes",
-        "foxes",
-        "calves",
-        "keys",
-        "lives",
-        "lilies",
-        "trays",
-        "friends",
-        "peaches",
-        "berries",
-        "bunnies",
-        "scarves"
+        "autoparts",
+        "memes",
+        "guns",
+        "AirPods",
+        "iPhones",
+        "Anime",
+        "Ls",
+        "Grades",
+        "bad rats",
+        "doors", "controllers", "trucks", "white outs", "stop signs", "money", "flowers", "erasers", "shirts", "couches", "bananas", "bowls", "blouses", "paint brushes", "drawers", "glasses", "beef", "purses", "model cars", "sticky notes", "plates", "credit cards", "pianos", "cameras", "fake flowers"
+    ],
+    "animal": [
+        "husky",
+        "coati", "oryx", "alligator", "hamster", "whale", "hyena", "lizard", "frog", "burro", "thorny devil", "mare", "aoudad", "fish", "budgerigar", "camel", "mule", "mountain goat", "meerkat", "jaguar", "bull", "quagga", "basilisk", "rhinoceros", "springbok", "parrot", "chimpanzee", "jackal", "peccary", "pony", "hippopotamus", "coyote", "bighorn", "lemur", "chipmunk", "zebu", "mandrill", "cheetah", "hedgehog", "ibex", "puma", "baboon", "zebra", "lynx", "dung beetle", "mongoose", "donkey", "snake", "capybara", "giraffe", "leopard"
+    ],
+    "body_part": [
+        "scalp", "throat", "teeth", "gums", "arm", "eyelashes", "fingernail", "legs", "mouth", "cheek", "abdomen", "pinky finger", "balls of the feet", "thumb", "shoulder", "teeth", "underarm", "ribs", "ear", "thigh", "toenail", "eyelid", "belly", "lower leg", "toes", "chin", "kidney", "nipple", "testes", "shoulder blade", "eyebrow", "stomach", "calves", "wrist", "waist", "hip", "belly button", "knee", "finger", "hair", "groin", "hand", "buttocks", "breast", "foot", "elbow", "humerus", "ankle", "collar bone", "lips"
+    ],
+    "clothing_piece": [
+        "Supreme",
+        "Gucci Gucci",
+        "S T U S S Y",
+        "Comme Kicks",
+        "Yeezy's",
+        "Snapback",
+        "Fjallraven baggy",
+        "Patagonia jacket",
+        "Lululemon yoga pants",
+        "Channel",
+        "Fear of God fleece",
+        "Rainbow Overalls",
+        "Flannel",
+        "Nose piercing",
+        "Skirt", "Dress", "Overalls", "Cummerbund", "Cargos", "Stockings", "Jogging Suit", "Tights", "Coat", "Blazer", "Suit", "Robe", "Blouse", "Shorts", "Cravat", "Waistcoat", "Tie", "Sunglasses", "Corset", "Underwear", "Scarf", "Jeans", "Camisole", "Sweatshirt", "Tracksuit"
+    ],
+    "liquid": [
+        "Mexican Coke",
+        "bottled diabetes",
+        "Calpico",
+        "green tea",
+        "boba tea",
+        "Maekju",
+        "horchata",
+        "pumpkin spice frappuccino",
+        "Tide",
+        "Jose Cuervo",
+        "Monster",
+        "can of Bang",
+        "Arizona",
+        "Malt Goya",
+        "urine",
+        "liquid feces",
+        "Gin & Tonic", "Daiquiri", "Margarita", "Piña Colada"
     ]
 }
