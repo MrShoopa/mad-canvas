@@ -20,7 +20,7 @@ export default class MadLibHandler extends React.Component {
 
     fetchStory = async (context = '') => {
         var story = "write your own"
-        await Axios.get('http://madlibz.herokuapp.com/api/random')
+        await Axios.get('https://madlibz.herokuapp.com/api/random')
             .then(res => {
                 story = res.data
                 this.setState({ story: { story } })
