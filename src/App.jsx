@@ -51,9 +51,6 @@ class App extends Component {
         let dice = Math.floor(Math.random() * 4 + 1)
         //console.log(dice)
 
-        //console.log(newBlanks[i])
-        if (typeof newBlanks[i] === "undefined") break
-
         /*  Generic Items */
         if (newBlanks[i] === 'noun') {
 
@@ -61,7 +58,7 @@ class App extends Component {
           let item = "llama"
           switch (dice) {
             case 1:
-              item = await this.CanvasDataHandler.fetchRandomCourse()
+              item = await this.CanvasDataHandler.fetchRandomCourse('return_valid')
               newBlanks[i] = item.name
               break
             case 2:
@@ -111,7 +108,7 @@ class App extends Component {
 
         /* Category-Specific Items */
         if (newBlanks[i] === 'a place' || newBlanks[i] === 'foreign country') {
-          let item = await this.CanvasDataHandler.fetchRandomCourse()
+          let item = await this.CanvasDataHandler.fetchRandomCourse('return_valid')
           newBlanks[i] = item.name
         }
         if (newBlanks[i] === 'animal') {

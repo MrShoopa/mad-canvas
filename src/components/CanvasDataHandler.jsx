@@ -73,6 +73,8 @@ export default class CanvasDataHandler extends React.Component {
                 this.state.data.courses = res.data
                 //console.log(this.state.data.courses)
                 return res.data
+            }).catch(err => {
+                console.error(`Unable to fetch courses info`)
             })
 
 
@@ -348,9 +350,13 @@ export default class CanvasDataHandler extends React.Component {
 
     TODO: Error handling and null cases
      */
-    fetchRandomCourse = async (course_list = this.state.data.courses) => {
+    fetchRandomCourse = async (condition = 'none', course_list = this.state.data.courses) => {
 
         let dice = Math.floor(Math.random() * course_list.length)
+
+        if (condition === 'return_valid')
+            while (course_list[dice].name === undefined)
+                dice = Math.floor(Math.random() * course_list.length)
 
         let logInfo = () => {
             console.log(course_list)

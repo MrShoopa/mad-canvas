@@ -43,7 +43,7 @@
         "iPhones",
         "Anime",
         "Ls",
-        "Grades",
+        "grades",
         "bad rats",
         "doors", "controllers", "trucks", "white outs", "stop signs", "money", "flowers", "erasers", "shirts", "couches", "bananas", "bowls", "blouses", "paint brushes", "drawers", "glasses", "beef", "purses", "model cars", "sticky notes", "plates", "credit cards", "pianos", "cameras", "fake flowers"
     ],
@@ -60,15 +60,15 @@
         "S T U S S Y",
         "Comme Kicks",
         "Yeezy's",
-        "Snapback",
+        "snapback",
         "Fjallraven baggy",
         "Patagonia jacket",
         "Lululemon yoga pants",
         "Channel",
         "Fear of God fleece",
-        "Rainbow Overalls",
-        "Flannel",
-        "Nose piercing",
+        "rainbow overalls",
+        "flannel",
+        "nose piercing",
         "Skirt", "Dress", "Overalls", "Cummerbund", "Cargos", "Stockings", "Jogging Suit", "Tights", "Coat", "Blazer", "Suit", "Robe", "Blouse", "Shorts", "Cravat", "Waistcoat", "Tie", "Sunglasses", "Corset", "Underwear", "Scarf", "Jeans", "Camisole", "Sweatshirt", "Tracksuit"
     ],
     "liquid": [
@@ -88,6 +88,6 @@
         "Malt Goya",
         "urine",
         "liquid feces",
-        "Gin & Tonic", "Daiquiri", "Margarita", "Piña Colada"
+        "gin & tonic", "daiquiri", "margarita", "piña colada"
     ]
 }
