@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/mad-canvas/static/js/runtime~main.8b050f5c.js"
   },
   {
-    "revision": "9c9606e732d4bbd4829f",
-    "url": "/mad-canvas/static/js/main.9c9606e7.chunk.js"
+    "revision": "df2db34f1bbbbba20847",
+    "url": "/mad-canvas/static/js/main.df2db34f.chunk.js"
   },
   {
     "revision": "96d958ecab030e277745",
     "url": "/mad-canvas/static/js/2.96d958ec.chunk.js"
   },
   {
-    "revision": "9c9606e732d4bbd4829f",
+    "revision": "df2db34f1bbbbba20847",
     "url": "/mad-canvas/static/css/main.5226f093.chunk.css"
   },
   {
-    "revision": "4ee80d12cc78fec3c4ab0154dff43f97",
+    "revision": "6de505fea59021e4933b38eb8a66f988",
     "url": "/mad-canvas/index.html"
   }
 ];
