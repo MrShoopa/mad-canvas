@@ -12,26 +12,26 @@ export default class Story extends React.Component {
         var formattedStoryString = ""
 
         for (let i = 0; i < this.props.story.value.length; i++) {
-            if (this.props.story.value.length > this.props.story.blanks.length
-                && i === this.props.story.value.length - 1)
-                continue;  //  Last word is a blank
-
+            if (this.props.story.value[i] === 0) break;
 
             let valueString = this.props.story.value[i]
             //console.log(valueString)
             formattedStoryString += `${valueString} `
 
+            if (this.props.story.blanks[i] === undefined) {
+                //console.log('Null blank found')
+                break;
+            }
+
             let blankString = this.props.story.blanks[i]
             //console.log(blankString)
             formattedStoryString += `${blankString} `
 
-            if (i === this.props.story.blanks.length - 1
-                && this.props.story.value[i + 1] && this.props.story.value[i + 1] !== 0)
-                formattedStoryString += `${this.props.story.value[i + 1]}`
 
         }
 
-        console.log(`Generated Mad Lib Story: \n${formattedStoryString}`)
+        console.log('Generated Mad Lib story.')
+        //console.log(`Generated Mad Lib Story: \n${formattedStoryString}`)
         return formattedStoryString
     }
 
