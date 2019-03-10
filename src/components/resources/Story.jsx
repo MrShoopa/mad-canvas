@@ -14,24 +14,20 @@ export default class Story extends React.Component {
         for (let i = 0; i < this.props.story.value.length; i++) {
             if (this.props.story.value.length > this.props.story.blanks.length
                 && i === this.props.story.value.length - 1)
-                break;  //  Last word is a blank
+                continue;  //  Last word is a blank
 
 
             let valueString = this.props.story.value[i]
             //console.log(valueString)
             formattedStoryString += `${valueString} `
 
-
-            if (i === this.props.story.value.length - 3) {
-                let lastValueString = this.props.story.value[i + 1]
-                //console.log(`touched last value`)
-                formattedStoryString += lastValueString
-                break;
-            }
-
             let blankString = this.props.story.blanks[i]
             //console.log(blankString)
             formattedStoryString += `${blankString} `
+
+            if (i === this.props.story.blanks.length - 1
+                && this.props.story.value[i + 1] && this.props.story.value[i + 1] !== 0)
+                formattedStoryString += `${this.props.story.value[i + 1]}`
 
         }
 
