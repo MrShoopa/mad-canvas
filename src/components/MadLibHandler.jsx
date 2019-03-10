@@ -31,6 +31,7 @@ export default class MadLibHandler extends React.Component {
         return story
     }
 
+    /*  Modification functions  */
     modifyBlanks = async (story, context = ['LAMOA']) => {
         console.log(story)
         var newBlanks = story.blanks
@@ -40,9 +41,8 @@ export default class MadLibHandler extends React.Component {
             return "Not a Story Object"
         }
 
-        for (var i = 0; i < story.blanks.length - 1; i++) {
+        for (var i = 0; i < story.blanks.length; i++) {
             newBlanks[i] = context[i]
-
         }
 
         story.blanks = newBlanks
@@ -57,7 +57,7 @@ export default class MadLibHandler extends React.Component {
 
         return random_words.noun[dice]
     }
-    fetchRandomPluralNoun = () => {
+    fetchRandomNounMultiple = () => {
         var dice = Math.floor(Math.random() * random_words.plural_noun.length);
 
         return random_words.plural_noun[dice]
@@ -72,14 +72,40 @@ export default class MadLibHandler extends React.Component {
 
         return random_words.verb[dice]
     }
+    fetchRandomVerbPast = () => {
+        //  Fetches from verb list then adds 'ed'. Might look weird!
+        var dice = Math.floor(Math.random() * random_words.verb.length);
+
+        return random_words.verb[dice] + "ed"
+    }
+    fetchRandomVerbContinuous = () => {
+        //  Fetches from verb list then adds 'ed'. Might look weird!
+        var dice = Math.floor(Math.random() * random_words.verb.length);
+
+        return random_words.verb[dice] + "ing"
+    }
 
 
     /*  Category-specific word randomizers */
     fetchRandomLiquid = () => {
+        var dice = Math.floor(Math.random() * random_words.liquid.length);
 
+        return random_words.liquid[dice]
     }
     fetchRandomAnimal = () => {
-        //TODO: What is your school mascot?
+        var dice = Math.floor(Math.random() * random_words.animal.length);
+
+        return random_words.animal[dice] + "ed"
+    }
+    fetchRandomBodyPart = () => {
+        var dice = Math.floor(Math.random() * random_words.body_part.length);
+
+        return random_words.body_part[dice]
+    }
+    fetchRandomClothingPiece = () => {
+        var dice = Math.floor(Math.random() * random_words.clothing_piece.length);
+
+        return random_words.clothing_piece[dice]
     }
 
     render = () => {
