@@ -5,6 +5,8 @@ Generate a Mad Libs story based on your school life! That is, if your school **u
 ## Usage
 *Because of how third-party apps works with Canvas LMS (on a per-institution install basis), you will have to obtain an **access token** from your account's settings page.*
 
+(This app does not store any tokens nor modifies your data. It is deleted every refresh.)
+
 ### Getting an access token
 ![](reference/github/access_token_demo.gif)
 
