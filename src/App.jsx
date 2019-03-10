@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-//import axios from 'axios'
 
+//  Internal Components
 //import logo from './logo.svg';
 import './App.css';
 //import AuthButton from './components/AuthButton';
@@ -9,9 +9,11 @@ import AuthIDInput from './components/AuthIDInput';
 import MadLibHandler from './components/MadLibHandler'
 import CanvasDataHandler from './components/CanvasDataHandler'
 
-import credentials from './auth/credentials.json'
-
+//  External Components
 import StoryScreen from './components/screens/StoryScreen'
+
+//  Resources
+import credentials from './auth/credentials.json'
 
 
 class App extends Component {
@@ -23,7 +25,8 @@ class App extends Component {
       if (await this.CanvasDataHandler.fetchAccounts() !== null)
         document.getElementById('case-message').innerHTML = `Account not found...`
       else {
-        document.getElementById('case-message').innerHTML = `Account found...`
+        document.getElementById('case-message').innerHTML = `Account found! Generating story...`
+
         var madlibObject = await this.MadLibHandler.fetchStory()
 
         var canvasBlankFillers = await this.matchBlanksFromCanvas(madlibObject.blanks)
@@ -32,7 +35,6 @@ class App extends Component {
 
         ReactDOM.render(<StoryScreen story={generatedMadLib} title={madlibObject.title} />,
           document.getElementById('root'))
-
       }
     }
   }
@@ -40,6 +42,7 @@ class App extends Component {
 
   matchBlanksFromCanvas = async (blanks) => {
     let newBlanks = blanks
+    console.log(blanks)
 
     let data = await this.CanvasDataHandler.initializeData()
 
@@ -48,12 +51,10 @@ class App extends Component {
         let dice = Math.floor(Math.random() * 4 + 1)
         //console.log(dice)
 
-        if (newBlanks[i] === 'a place' || newBlanks[i] === 'foreign country') {
-          let item = await this.CanvasDataHandler.fetchRandomCourse()
-          newBlanks[i] = item.name
-        }
+        /*  Generic Items */
         if (newBlanks[i] === 'noun') {
 
+          //  Fetches Items from Canvas data since most of these are items
           let item = "llama"
           switch (dice) {
             case 1:
@@ -73,42 +74,64 @@ class App extends Component {
               newBlanks[i] = item.name
               break
             //DISABLED (Look at dice variable)
-            case 9:
+            case 5:
               item = await this.CanvasDataHandler.fetchRandomModule()
               newBlanks[i] = item.name
               break
-            case 10:
+            case 6:
               item = await this.CanvasDataHandler.fetchSelfName()
               newBlanks[i] = item.name
               break
             default:
               console.log(item)
           }
-
         }
         if (newBlanks[i] === 'plural noun') {
-          newBlanks[i] = await this.MadLibHandler.fetchRandomPluralNoun()
+          newBlanks[i] = await this.MadLibHandler.fetchRandomNounMultiple()
         }
         if (newBlanks[i] === 'verb') {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
+        }
+        if (newBlanks[i] === 'past tense verb') {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
+        }
+        if (newBlanks[i] === `verb ending in 'ing'`) {
           newBlanks[i] = await this.MadLibHandler.fetchRandomVerb()
         }
         if (newBlanks[i] === 'adjective') {
           newBlanks[i] = await this.MadLibHandler.fetchRandomAdjective()
         }
+
+        console.log(newBlanks[i])
+        /* Category-Specific Items */
+        if (newBlanks[i] === 'a place' || newBlanks[i] === 'foreign country') {
+          let item = await this.CanvasDataHandler.fetchRandomCourse()
+          newBlanks[i] = item.name
+        }
         if (newBlanks[i] === 'animal') {
-          newBlanks[i] = 'husky'
+          newBlanks[i] = await this.MadLibHandler.fetchRandomAnimal()
+          //newBlanks[i] = 'husky' hehe
           //TODO: newBlanks[i] = this.state.mascot
+        }
+        if (newBlanks[i].includes('body') && newBlanks[i].includes('part')) {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomBodyPart()
+        }
+        if (newBlanks[i].includes('clothing')) {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomClothingPiece()
+        }
+        if (newBlanks[i].includes('liquid')) {
+          newBlanks[i] = await this.MadLibHandler.fetchRandomLiquid()
         }
 
 
         //TODO: More cases :)
       }
 
-      console.log('Finished parsing blanks!')
     }
 
     await blankParsing()
 
+    console.log('Finished parsing blanks!')
     console.log(newBlanks)
     return newBlanks
 
@@ -132,7 +155,7 @@ class App extends Component {
 
         <footer className="App-footer" >
           <p>
-            Created by Joe Villegas
+            Created by Joe V.
           </p>
         </footer>
         <MadLibHandler onRef={ref => (this.MadLibHandler = ref)} />
